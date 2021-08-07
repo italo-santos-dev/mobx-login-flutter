@@ -1,0 +1,47 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Dart
+
+on:
+  push:
+    branches: [ reset ]
+  pull_request:
+    branches: [ reset ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    container:
+      image:  google/dart:latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: basic settings
+      run: |
+        apt update 
+        apt-get install curl -y
+        apt-get install git -y
+        apt-get install unzip -y
+        apt-get install zip -y
+        apt-get install xz-utils
+    - name: Mount flutter
+      run: git clone -b master https://github.com/flutter/flutter.git
+    - name: Show version
+      run: ./flutter/bin/flutter --version
+    - name: Install dependencies
+      run: flutter/bin/flutter packages get
+    - name: Enable web app
+      run: flutter/bin/flutter config --enable-web
+    - name: Build app
+      run: flutter/bin/flutter build web
+    - name: deploy hosting on firebase
+      uses: w9jds/firebase-action@master
+      with:
+        args: deploy --only hosting
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
