@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       height: 44.0,
                       alignment: Alignment.centerRight,
-                      child: FlatButton(
+                      child: TextButton(
                         child: Text(
                           "Esqueceu sua senha?",
                           textAlign: TextAlign.right,
