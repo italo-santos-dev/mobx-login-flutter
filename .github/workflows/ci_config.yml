@@ -40,7 +40,7 @@ jobs:
     - name: Build app
       run: flutter/bin/flutter build web
     - name: deploy hosting on firebase
-      uses: w9jds/firebase-action@master
+      uses: w9jds/firebase-action@reset
       with:
         args: deploy --only hosting
       env:
