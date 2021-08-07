@@ -7,9 +7,9 @@ name: Dart
 
 on:
   push:
-    branches: [ reset ]
+    branches: [ master ]
   pull_request:
-    branches: [ reset ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -37,8 +37,6 @@ jobs:
       run: flutter/bin/flutter packages get
     - name: Enable web app
       run: flutter/bin/flutter config --enable-web
-    - name: Run tests
-      run: flutter/bin/flutter build test
     - name: Build app
       run: flutter/bin/flutter build web
     - name: Deploy to Firebase
