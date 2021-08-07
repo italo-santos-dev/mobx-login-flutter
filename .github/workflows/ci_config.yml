@@ -38,7 +38,7 @@ jobs:
     - name: Enable web app
       run: flutter/bin/flutter config --enable-web
     - name: Build app
-      run: flutter/bin/flutter build web
+      run: flutter/bin/flutter build web --enable-experiment=non-nullable --no-sound-null-safety
     - name: Deploy to Firebase
       uses: w9jds/firebase-action@master
       with:
