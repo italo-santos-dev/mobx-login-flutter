@@ -36,97 +36,97 @@ class _LoginScreenState extends State<LoginScreen> {
           alignment: Alignment.center,
           margin: const EdgeInsets.all(32),
           child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              elevation: 16,
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Observer(
-                      builder: (_) {
-                        return CustomTextField(
-                          hint: 'E-mail',
-                          prefix: Icon(Icons.account_circle),
-                          textInputType: TextInputType.emailAddress,
-                          onChanged: loginStore.setEmail,
-                          enabled: !loginStore.loading,
-                        );
-                      },
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Observer(
-                      builder: (_) {
-                        return CustomTextField(
-                          hint: 'Senha',
-                          prefix: Icon(Icons.lock),
-                          obscure: !loginStore.passwordVisible,
-                          onChanged: loginStore.setPassword,
-                          enabled: !loginStore.loading,
-                          suffix: CustomIconButton(
-                            radius: 32,
-                            iconData: loginStore.passwordVisible
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            onTap: loginStore.togglePasswordVisbility,
-                          ),
-                        );
-                      },
-                    ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    Container(
-                      height: 44.0,
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        child: Text(
-                          "Esqueceu sua senha?",
-                          textAlign: TextAlign.right,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            elevation: 16,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Observer(
+                    builder: (_) {
+                      return CustomTextField(
+                        hint: 'E-mail',
+                        prefix: Icon(Icons.account_circle),
+                        textInputType: TextInputType.emailAddress,
+                        onChanged: loginStore.setEmail,
+                        enabled: !loginStore.loading,
+                      );
+                    },
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Observer(
+                    builder: (_) {
+                      return CustomTextField(
+                        hint: 'Senha',
+                        prefix: Icon(Icons.lock),
+                        obscure: !loginStore.passwordVisible,
+                        onChanged: loginStore.setPassword,
+                        enabled: !loginStore.loading,
+                        suffix: CustomIconButton(
+                          radius: 32,
+                          iconData: loginStore.passwordVisible
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          onTap: loginStore.togglePasswordVisbility,
                         ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ResetPasswordScreen(),
-                            ),
-                          );
-                        },
+                      );
+                    },
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Container(
+                    height: 44.0,
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      child: Text(
+                        "Esqueceu sua senha?",
+                        textAlign: TextAlign.right,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
-                    Observer(
-                      builder: (_) {
-                        return SizedBox(
-                          height: 44.0,
-                          child: RaisedButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: loginStore.loading
-                                ? CircularProgressIndicator(
-                                    valueColor:
-                                        AlwaysStoppedAnimation(Colors.white),
-                                  )
-                                : Text('Login'),
-                            color: Theme.of(context).primaryColor,
-                            disabledColor:
-                                Theme.of(context).primaryColor.withAlpha(100),
-                            textColor: Colors.white,
-                            onPressed: loginStore.loginPressed,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ResetPasswordScreen(),
                           ),
                         );
                       },
-                    )
-                  ],
-                ),
-              )),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                  Observer(
+                    builder: (_) {
+                      return SizedBox(
+                        height: 44.0,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Theme.of(context).primaryColor,
+                            textStyle: TextStyle(
+                              fontSize: 15.0,
+                            ),
+                          ),
+                          onPressed: loginStore.loginPressed,
+                          child: loginStore.loading
+                              ? CircularProgressIndicator(
+                                  valueColor:
+                                      AlwaysStoppedAnimation(Colors.white),
+                                )
+                              : Text('Login'),
+                        ),
+                      );
+                    },
+                  )
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
