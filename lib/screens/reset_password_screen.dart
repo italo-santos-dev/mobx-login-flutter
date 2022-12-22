@@ -107,22 +107,20 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           builder: (_) {
                             return SizedBox(
                               height: 44.0,
-                              child: RaisedButton(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Theme.of(context).primaryColor,
+                                  textStyle: TextStyle(
+                                    fontSize: 15.0,
+                                  ),
                                 ),
+                                onPressed: loginStore.loginPressed,
                                 child: loginStore.loading
                                     ? CircularProgressIndicator(
-                                        valueColor: AlwaysStoppedAnimation(
-                                            Colors.white),
-                                      )
-                                    : Text('Enviar'),
-                                color: Theme.of(context).primaryColor,
-                                disabledColor: Theme.of(context)
-                                    .primaryColor
-                                    .withAlpha(100),
-                                textColor: Colors.white,
-                                onPressed: loginStore.loginEmail,
+                                  valueColor:
+                                  AlwaysStoppedAnimation(Colors.white),
+                                )
+                                    : Text('Login'),
                               ),
                             );
                           },
