@@ -16,15 +16,15 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   late ReactionDisposer disposer;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    disposer = reaction((_) => loginStore.loggedIn, (loggedIn) {
-      if (loggedIn != null)
-        Navigator.of(context)
-            .pushReplacement(MaterialPageRoute(builder: (_) => LoginScreen()));
-    });
-  }
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   disposer = reaction((_) => loginStore.loggedIn, (loggedIn) {
+  //     if (loggedIn != null)
+  //       Navigator.of(context)
+  //           .pushReplacement(MaterialPageRoute(builder: (_) => LoginScreen()));
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -89,43 +89,43 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     width: double.infinity,
                     child: Column(
                       children: <Widget>[
-                        Observer(
-                          builder: (_) {
-                            return CustomTextField(
-                              hint: 'E-mail',
-                              prefix: Icon(Icons.account_circle),
-                              textInputType: TextInputType.emailAddress,
-                              onChanged: loginStore.setEmail,
-                              enabled: !loginStore.loading, suffix: Icon(Icons.account_circle),
-                              controller: TextEditingController(),
-                            );
-                          },
-                        ),
+                        // Observer(
+                        //   builder: (_) {
+                        //     return CustomTextField(
+                        //       hint: 'E-mail',
+                        //       prefix: Icon(Icons.account_circle),
+                        //       textInputType: TextInputType.emailAddress,
+                        //       onChanged: loginStore.setEmail,
+                        //       enabled: !loginStore.loading, suffix: Icon(Icons.account_circle),
+                        //       controller: TextEditingController(),
+                        //     );
+                        //   },
+                        // ),
                         SizedBox(
                           height: 16.0,
                         ),
-                        Observer(
-                          builder: (_) {
-                            return SizedBox(
-                              height: 44.0,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Theme.of(context).primaryColor,
-                                  textStyle: TextStyle(
-                                    fontSize: 15.0,
-                                  ),
-                                ),
-                                onPressed: loginStore.loginPressed,
-                                child: loginStore.loading
-                                    ? CircularProgressIndicator(
-                                  valueColor:
-                                  AlwaysStoppedAnimation(Colors.white),
-                                )
-                                    : Text('Login'),
-                              ),
-                            );
-                          },
-                        ),
+                        // Observer(
+                        //   builder: (_) {
+                        //     return SizedBox(
+                        //       height: 44.0,
+                        //       child: ElevatedButton(
+                        //         style: ElevatedButton.styleFrom(
+                        //           backgroundColor: Theme.of(context).primaryColor,
+                        //           textStyle: TextStyle(
+                        //             fontSize: 15.0,
+                        //           ),
+                        //         ),
+                        //         onPressed: loginStore.loginPressed,
+                        //         child: loginStore.loading
+                        //             ? CircularProgressIndicator(
+                        //           valueColor:
+                        //           AlwaysStoppedAnimation(Colors.white),
+                        //         )
+                        //             : Text('Login'),
+                        //       ),
+                        //     );
+                        //   },
+                        // ),
                         SizedBox(
                           height: 20,
                         ),
