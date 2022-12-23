@@ -9,27 +9,25 @@ part of 'login_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginStore on _LoginStore, Store {
-  Computed<bool> _$isEmailValidComputed;
+  late Computed<bool> _$isEmailValidComputed;
 
   @override
   bool get isEmailValid =>
-      (_$isEmailValidComputed ??= Computed<bool>(() => super.isEmailValid,
-              name: '_LoginStore.isEmailValid'))
+      (_$isEmailValidComputed)
           .value;
-  Computed<bool> _$isPasswordValidComputed;
+  late Computed<bool> _$isPasswordValidComputed;
 
   @override
   bool get isPasswordValid =>
-      (_$isPasswordValidComputed ??= Computed<bool>(() => super.isPasswordValid,
-              name: '_LoginStore.isPasswordValid'))
+      (_$isPasswordValidComputed)
           .value;
-  Computed<Function> _$loginPressedComputed;
+  late Computed<Function> _$loginPressedComputed;
 
-  @override
-  Function get loginPressed =>
-      (_$loginPressedComputed ??= Computed<Function>(() => super.loginPressed,
-              name: '_LoginStore.loginPressed'))
-          .value;
+  // @override
+  // Function get loginPressed =>
+  //     (_$loginPressedComputed ??= Computed<Function>(() => super.loginPressed,
+  //             name: '_LoginStore.loginPressed'))
+  //         .value;
 
   final _$emailAtom = Atom(name: '_LoginStore.email');
 
