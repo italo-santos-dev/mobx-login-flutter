@@ -16,13 +16,13 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   LoginStore loginStore = LoginStore();
 
-  ReactionDisposer disposer;
+  late ReactionDisposer disposer;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     disposer = reaction((_) => loginStore.loggedIn, (loggedIn) {
-      if (loggedIn)
+      if (loggedIn != null)
         Navigator.of(context)
             .pushReplacement(MaterialPageRoute(builder: (_) => ListScreen()));
     });
@@ -53,6 +53,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         textInputType: TextInputType.emailAddress,
                         onChanged: loginStore.setEmail,
                         enabled: !loginStore.loading,
+                        suffix: Icon(Icons.account_circle),
+                        controller: TextEditingController(),
                       );
                     },
                   ),
@@ -74,6 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               : Icons.visibility,
                           onTap: loginStore.togglePasswordVisbility,
                         ),
+                        textInputType: TextInputType.text,
+                        controller: TextEditingController(),
                       );
                     },
                   ),
@@ -112,13 +116,21 @@ class _LoginScreenState extends State<LoginScreen> {
                               fontSize: 15.0,
                             ),
                           ),
-                          onPressed: loginStore.loginPressed,
-                          child: loginStore.loading
-                              ? CircularProgressIndicator(
-                                  valueColor:
-                                      AlwaysStoppedAnimation(Colors.white),
-                                )
-                              : Text('Login'),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ListScreen()),
+                            );
+                          },
+                          child: Text("Login"),
+                          // onPressed: loginStore.loginPressed,
+                          // child: loginStore.loading
+                          //     ? CircularProgressIndicator(
+                          //         valueColor:
+                          //             AlwaysStoppedAnimation(Colors.white),
+                          //       )
+                          //     : Text('Login'),
                         ),
                       );
                     },
