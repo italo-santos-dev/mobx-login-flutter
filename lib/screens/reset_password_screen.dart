@@ -14,13 +14,13 @@ class ResetPasswordScreen extends StatefulWidget {
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   LoginStore loginStore = LoginStore();
 
-  ReactionDisposer disposer;
+  late ReactionDisposer disposer;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     disposer = reaction((_) => loginStore.loggedIn, (loggedIn) {
-      if (loggedIn)
+      if (loggedIn != null)
         Navigator.of(context)
             .pushReplacement(MaterialPageRoute(builder: (_) => LoginScreen()));
     });
@@ -96,7 +96,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                               prefix: Icon(Icons.account_circle),
                               textInputType: TextInputType.emailAddress,
                               onChanged: loginStore.setEmail,
-                              enabled: !loginStore.loading,
+                              enabled: !loginStore.loading, suffix: Icon(Icons.account_circle),
+                              controller: TextEditingController(),
                             );
                           },
                         ),
