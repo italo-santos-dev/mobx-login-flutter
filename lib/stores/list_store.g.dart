@@ -9,12 +9,11 @@ part of 'list_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ListStore on _ListSotre, Store {
-  Computed<bool> _$isFormValidComputed;
+  late Computed<bool> _$isFormValidComputed;
 
   @override
   bool get isFormValid =>
-      (_$isFormValidComputed ??= Computed<bool>(() => super.isFormValid,
-              name: '_ListSotre.isFormValid'))
+      (_$isFormValidComputed)
           .value;
 
   final _$newTodoTitleAtom = Atom(name: '_ListSotre.newTodoTitle');
