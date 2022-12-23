@@ -59,60 +59,61 @@ class _ListScreenState extends State<ListScreen> {
                     padding: const EdgeInsets.all(16),
                     child: Column(
                       children: <Widget>[
-                        Observer(
-                          builder: (_) {
-                            return CustomTextField(
-                              controller: controller,
-                              hint: 'Tarefa',
-                              onChanged: listStore.setNewTodoTitle,
-                              suffix: listStore.isFormValid
-                                  ? CustomIconButton(
-                                      radius: 32,
-                                      iconData: Icons.add,
-                                      onTap: () {
-                                        listStore.addTodo();
-                                        controller.clear();
-                                      },
-                                    )
-                                  : null,
-                            );
-                          },
-                        ),
+                        // Observer(
+                        //   builder: (_) {
+                        //     return CustomTextField(
+                        //       controller: controller,
+                        //       hint: 'Tarefa',
+                        //       onChanged: listStore.setNewTodoTitle,
+                        //       suffix: listStore.isFormValid
+                        //           ? CustomIconButton(
+                        //               radius: 32,
+                        //               iconData: Icons.add,
+                        //               onTap: () {
+                        //                 listStore.addTodo();
+                        //                 controller.clear();
+                        //               },
+                        //             )
+                        //           : Container(), prefix:Icon(Icons.account_circle), textInputType: TextInputType.text, enabled: true,
+                        //     );
+                        //   },
+                        // ),
                         const SizedBox(
                           height: 8,
                         ),
                         Expanded(
-                          child: Observer(
-                            builder: (_) {
-                              return ListView.separated(
-                                itemCount: listStore.todoList.length,
-                                itemBuilder: (_, index) {
-                                  final todo = listStore.todoList[index];
-                                  return Observer(
-                                    builder: (_) {
-                                      return ListTile(
-                                        title: Text(
-                                          todo.title,
-                                          style: TextStyle(
-                                            decoration: todo.done
-                                                ? TextDecoration.lineThrough
-                                                : null,
-                                            color: todo.done
-                                                ? Colors.grey
-                                                : Colors.black38,
-                                          ),
-                                        ),
-                                        onTap: todo.toggleDone,
-                                      );
-                                    },
-                                  );
-                                },
-                                separatorBuilder: (_, __) {
-                                  return Divider();
-                                },
-                              );
-                            },
-                          ),
+                          child: Text("Test"),
+                          // child: Observer(
+                          //   builder: (_) {
+                          //     return ListView.separated(
+                          //       itemCount: listStore.todoList.length,
+                          //       itemBuilder: (_, index) {
+                          //         final todo = listStore.todoList[index];
+                          //         return Observer(
+                          //           builder: (_) {
+                          //             return ListTile(
+                          //               title: Text(
+                          //                 todo.title,
+                          //                 style: TextStyle(
+                          //                   decoration: todo.done
+                          //                       ? TextDecoration.lineThrough
+                          //                       : null,
+                          //                   color: todo.done
+                          //                       ? Colors.grey
+                          //                       : Colors.black38,
+                          //                 ),
+                          //               ),
+                          //               onTap: todo.toggleDone,
+                          //             );
+                          //           },
+                          //         );
+                          //       },
+                          //       separatorBuilder: (_, __) {
+                          //         return Divider();
+                          //       },
+                          //     );
+                          //   },
+                          // ),
                         ),
                       ],
                     ),
